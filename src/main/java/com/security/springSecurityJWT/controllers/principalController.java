@@ -53,4 +53,8 @@ public class principalController {
         userRepository.deleteById(Long.parseLong(id));
         return "user deleted";
     }
+    @GetMapping("/getusers")
+    public ResponseEntity<?> getusers(){
+        return ResponseEntity.ok(userRepository.findAll());
+    }
 }

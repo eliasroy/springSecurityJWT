@@ -6,16 +6,20 @@ import com.security.springSecurityJWT.models.RoleEntity;
 import com.security.springSecurityJWT.models.UserEntity;
 import com.security.springSecurityJWT.models.dtos.UserDTO;
 import jakarta.validation.Valid;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Set;
 import java.util.stream.Collectors;
 
 @RestController
+@NoArgsConstructor
 public class principalController {
 
+    private  PasswordEncoder passwordEncoder;
 
     @Autowired
     private IUserRepository userRepository;
@@ -39,7 +43,7 @@ public class principalController {
 
         UserEntity newuser=UserEntity.builder()
                 .username(user.getUsername())
-                .password(user.getPassword())
+                .password(passwordEncoder.encode(user.getPassword()))
                 .email(user.getEmail())
                 .roles(roles)
                 .build();

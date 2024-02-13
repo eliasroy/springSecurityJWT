@@ -7,6 +7,7 @@ import com.security.springSecurityJWT.models.UserEntity;
 import com.security.springSecurityJWT.models.dtos.UserDTO;
 import jakarta.validation.Valid;
 import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -17,8 +18,9 @@ import java.util.stream.Collectors;
 
 @RestController
 @NoArgsConstructor
+@Slf4j
 public class principalController {
-
+    @Autowired
     private  PasswordEncoder passwordEncoder;
 
     @Autowired
@@ -40,6 +42,8 @@ public class principalController {
                         builder()
                         .name(ERole.valueOf(role))
                         .build()).collect(Collectors.toSet());
+
+        log.info("user {}: ".concat(user.toString()));
 
         UserEntity newuser=UserEntity.builder()
                 .username(user.getUsername())

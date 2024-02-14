@@ -34,6 +34,7 @@ public class principalController {
         return "hello world secured";
     }
 
+
     @PostMapping("/createuser")
     public ResponseEntity<?> createUsers(@Valid @RequestBody  UserDTO user){
 

@@ -1,7 +1,7 @@
 package com.security.springSecurityJWT.services;
 
 import com.security.springSecurityJWT.models.UserEntity;
-import com.security.springSecurityJWT.repositories.IUserRepository;
+import com.security.springSecurityJWT.mapper.IUserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 public class UserDeatailsImpl implements UserDetailsService
 {
     @Autowired
-    private IUserRepository userRepository;
+    private IUserMapper userRepository;
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException
     {

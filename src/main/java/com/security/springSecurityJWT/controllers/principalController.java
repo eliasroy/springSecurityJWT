@@ -1,6 +1,6 @@
 package com.security.springSecurityJWT.controllers;
 
-import com.security.springSecurityJWT.repositories.IUserRepository;
+import com.security.springSecurityJWT.mapper.IUserMapper;
 import com.security.springSecurityJWT.models.ERole;
 import com.security.springSecurityJWT.models.RoleEntity;
 import com.security.springSecurityJWT.models.UserEntity;
@@ -24,7 +24,7 @@ public class principalController {
     private  PasswordEncoder passwordEncoder;
 
     @Autowired
-    private IUserRepository userRepository;
+    private IUserMapper userRepository;
     @GetMapping("/hello")
     public String hello(){
         return "hello world";
